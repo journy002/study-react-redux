@@ -49,14 +49,15 @@ const addToList = item => ({
 
 function reducer(state = initialState, action) {
     // state 의 초기값을 initialState로 지정
-
     switch(action.type) {
         case INCREASE :
+            console.log('increase 왜지')
             return {
                 ...state,
-                counter: state.counter + 1
+                counter: state.counter + 1,
             };
         case DECREASE :
+            console.log('decrease 어째서')
             return {
                 ...state,
                 counter: state.counter - 1
@@ -90,9 +91,8 @@ const unsubscribe = store.subscribe(listener);
 // 구독을 해제하고 싶을 때는 unsubscribe() 를 호출
 
 // 액션들을 디스패치 해보자
-store.dispatch(increase(),'increase');
+store.dispatch(increase());
 store.dispatch(decrease());
-store.dispatch(addToList({ id: 1, text: '와우' }),'addtolist');
 store.dispatch(changeText('안녕하세요'),'changeText');
 store.dispatch(addToList({ id: 2, text: '오호' }),'addtolist');
 
