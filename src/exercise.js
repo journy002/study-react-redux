@@ -47,3 +47,52 @@ const addToList = item => ({
 // 새로운 상태를 만드는 함수를 만들어 보자
 // 주의: 리듀서에서는 불변성을 꼭 지켜줘야 한다. (리액트도 마찬가지.)
 
+function reducer(state = initialState, action) {
+    // state 의 초기값을 initialState로 지정
+
+    switch(action.type) {
+        case INCREASE :
+            return {
+                ...state,
+                counter: state.counter + 1
+            };
+        case DECREASE :
+            return {
+                ...state,
+                counter: state.counter - 1
+            };
+        case CHANGE_TEXT :
+            return {
+                ...state,
+                text: action.text
+            }
+        case ADD_TO_LIST :
+            return {
+                ...state,
+                list: state.list.concat(action.item)
+            }
+    }
+}
+
+
+/* 스토어 만들기 */
+const store = createStore(reducer);
+
+console.log(store.getState()); // 현재 store안에 들어있는 상태를 조회합니다.
+
+// 스토어안에 들어있는 상태가 바뀔 때 마다 호출되는 listener 함수
+const listener = () => {
+    const state = store.getState();
+    console.log(state);
+};
+
+const unsubscribe = store.subscribe(listener);
+// 구독을 해제하고 싶을 때는 unsubscribe() 를 호출
+
+// 액션들을 디스패치 해보자
+store.dispatch(increase(),'increase');
+store.dispatch(decrease());
+store.dispatch(addToList({ id: 1, text: '와우' }),'addtolist');
+store.dispatch(changeText('안녕하세요'),'changeText');
+store.dispatch(addToList({ id: 2, text: '오호' }),'addtolist');
+
