@@ -14,14 +14,14 @@ export const increase = () => ({ type: INCREASE });
 export const decrease = () => ({ type: DECREASE });
 
 const initialState = {
-    counter: 0,
+    number: 0,
     diff: 1 
 };
 
 /* 리듀서 선언 */
 // 리듀서는 export default 로 내보내주세요.
 
-export function reducer( state = initialState, action ) {
+export default function reducer( state = initialState, action ) {
     switch(action.type) {
         case SET_DIFF :
             return {
@@ -32,13 +32,13 @@ export function reducer( state = initialState, action ) {
         case INCREASE :
             return {
                 ...state,
-                counter : state.counter + 1
+                number : state.number + state.diff
             }
 
         case DECREASE :
             return {  
                 ...state,
-                counter : state.counter - 1
+                number : state.number - state.diff
             }
 
         default : return state
