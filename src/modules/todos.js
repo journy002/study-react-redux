@@ -8,7 +8,7 @@ let nextId = 1; // todo 데이터에서 사용 할 고유 id
 export const addTodo = text => ({
     type: ADD_TODO,
     todo : {
-        id: nextId++,
+        id: nextId++, // 새 항목을 추가하고 nextId 값에 1을 더해줍니다.
         text
     }
 });

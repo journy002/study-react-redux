@@ -1,21 +1,18 @@
-import { createStore } from "redux";
+import { createStore } from 'redux';
 
-// 초기값 설정
 const initialState = {
     counter: 0,
     text: '',
-    list: [],
+    list: []
 };
 
-// 액션 타입 정의
 const INCREASE = 'INCREASE';
 const DECREASE = 'DECREASE';
 const CHANGE_TEXT = 'CHANGE_TEXT';
 const ADD_LIST = 'ADD_LIST';
 
-// 액션 생성함수 정의
 const increase = () => ({
-    type: INCREASE
+     type: INCREASE
 });
 
 const decrease = () => ({
@@ -28,7 +25,7 @@ const changeText = (text) => ({
 });
 
 const addList = (item) => ({
-    type:ADD_LIST,
+    type: ADD_LIST,
     item
 });
 
@@ -39,38 +36,37 @@ function reducer(state = initialState, action) {
                 ...state,
                 counter: state.counter + 1
             }
+
         case DECREASE :
             return {
                 ...state,
                 counter: state.counter - 1
             }
 
-        case CHANGE_TEXT : 
+        case CHANGE_TEXT :
             return {
                 ...state,
                 text: action.text
             }
 
-        case ADD_LIST : 
+        case ADD_LIST :
             return {
                 ...state,
-                list: state.list.concat(action.list)
+                item: state.list.concat(action.item)
             }
-
-        default: return state
-    }
-}
+    };
+};
 
 const store = createStore(reducer);
-
+console.log(store.getState());
 const listener = () => {
     const state = store.getState();
-    console.log(state)
-}
+    console.log(state);
+};
 
-const unsubscribe = store.subscribe(listener)
+store.subscribe(listener);
 
 store.dispatch(increase());
 store.dispatch(decrease());
-store.dispatch(changeText('change text test'));
-store.dispatch(addList({ id: 1, text: 'addList test' }));
+store.dispatch(changeText('text change'));
+store.dispatch(addList({ id: 1, text: 'add text in list' }));

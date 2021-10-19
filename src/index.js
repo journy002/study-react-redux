@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import './exercise2'
+import './exercise2';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './modules';
 
 const store = createStore(rootReducer); // 스토어 만들기
-// console.log(store.getState()); 스토어 상태 확인
+console.log(store.getState()); // 스토어 상태 확인
 
 ReactDOM.render(
   <Provider store={store}>

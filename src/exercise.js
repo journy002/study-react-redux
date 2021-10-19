@@ -87,6 +87,8 @@ const listener = () => {
     console.log(state);
 };
 
+
+// subscribe : 스토어의 내장함수, 함수 형태의 값을 파라미터로 받아온다. 특정 값을 전달해주면 액션이 디스패치 되었을 때 마다 전달해준 함수가 호출된다.
 const unsubscribe = store.subscribe(listener);
 // 구독을 해제하고 싶을 때는 unsubscribe() 를 호출
 

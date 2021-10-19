@@ -13,9 +13,10 @@ export const setDiff = diff => ({ type: SET_DIFF, diff });
 export const increase = () => ({ type: INCREASE });
 export const decrease = () => ({ type: DECREASE });
 
+// 상태 초기값 선언
 const initialState = {
     number: 0,
-    diff: 1 
+    diff: 1
 };
 
 /* 리듀서 선언 */
